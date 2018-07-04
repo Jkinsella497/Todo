@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+	<br>
+	<h4>Create a new todo item:</h4>
+	<form action="/create" method="post" accept-charset="utf-8">
+		<input type="text" name="content" />
+	</form>
+    <p>Welcome to <%= title %></p>
+
+<% todos.forEach( function( todo ){ %>
+	<p>
+		<span>
+			<%= todo.content %>
+		</span>
+		<span>
+			<a class="btn btn-sm btn-info" href="/edit/<%= todo._id %>" title="Edit this todo item">EDIT</a>
+		</span>
+		<span>
+			<a class="btn btn-sm btn-danger" href="/destroy/<%= todo.id %>" title="Delete this todo item">Delete</a>
+		</span>
+	</p>
+<% }); %>
+  </body>
+</html>
